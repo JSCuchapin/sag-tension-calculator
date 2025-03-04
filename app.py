@@ -3,6 +3,11 @@ import math
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Sag-Tension API is running!"
+
+
 def calculate_total_weight(W_con, W_ice, W_wind):
     return math.sqrt((W_con + W_ice) ** 2 + W_wind ** 2)
 
@@ -32,5 +37,8 @@ def calculate():
         return jsonify({"error": str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
  
