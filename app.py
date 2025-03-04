@@ -24,14 +24,69 @@ def calculate():
         W_ice = float(request.args.get('ice', 0.5))
         W_wind = float(request.args.get('wind', 0.3))
 
+        # Step 1: Compute total weight
         W_total = calculate_total_weight(W_con, W_ice, W_wind)
+
+        # Step 2: Compute sag
         sag = calculate_sag(S, W_total, T_h)
+
+        # Step 3: Format LaTeX output
+        latex_output = f"""
+        \\[
+        \\textbf{{Step-by-Step Calculations}}
+        \\]
+
+        \\[
+        \\textbf{{1. Calculate Total Weight}} \\quad (W_{{total}})
+        \\]
+
+        \\[
+        W_{{total}} = \\sqrt{{({W_con} + {W_ice})^2 + {W_wind}^2}}
+        \\]
+
+        \\[
+        = \\sqrt{{({W_con + W_ice})^2 + {W_wind}^2}}
+        \\]
+
+        \\[
+        = {round(W_total, 3)} \\quad \\text{{N/m}}
+        \\]
+
+        \\[
+        \\textbf{{2. Apply Sag Formula}}
+        \\]
+
+        \\[
+        \\text{{Sag}} = \\frac{{W_{{total}} \\times S^2}}{{8 \\times Tension}}
+        \\]
+
+        \\[
+        = \\frac{{{round(W_total, 3)} \\times {S}^2}}{{8 \\times {T_h}}}
+        \\]
+
+        \\[
+        = {round(sag, 3)} \\quad \\text{{meters}}
+        \\]
+
+        \\[
+        \\textbf{{Final Result:}}
+        \\]
+
+        \\[
+        \\text{{Total Weight}}: {round(W_total, 3)} \\quad \\text{{N/m}}
+        \\]
+
+        \\[
+        \\text{{Sag}}: {round(sag, 3)} \\quad \\text{{meters}}
+        \\]
+        """
 
         return jsonify({
             "span": S,
             "weight_total": round(W_total, 3),
             "tension": T_h,
-            "sag": round(sag, 3)
+            "sag": round(sag, 3),
+            "latex": latex_output
         })
 
     except Exception as e:
