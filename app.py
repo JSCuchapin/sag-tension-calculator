@@ -39,6 +39,11 @@ def calculate_final_tension(alpha, E, Area, W1, W2, S, H1, t1, t2):
     
     return max(real_roots) if real_roots else float('nan'), C1, C2, A, B
 
+@app.route('/conductors')
+def get_conductors():
+    return send_from_directory('static', 'conductors.json')
+
+
 @app.route('/calculate', methods=['GET'])
 def calculate():
     try:

@@ -1,0 +1,81 @@
+{
+  "Conductor_Characteristics": [
+    {
+      "Code_Word": "Sparrow",
+      "Size_AWG_MCM": "*2",
+      "Stranding": "*6/1",
+      "Ultimate_Strength_kg": 1250,
+      "Weight_per_m_kg_m": 0.135714090909091,
+      "Cross_Sectional_Area_m2": 0.0000439,
+      "Conductor_Diameter_m": 0.00802600833079346,
+      "Final_Modulus_of_Elasticity_N_m2": 79000000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000191
+    },
+    {
+      "Code_Word": "Arbutus",
+      "Size_AWG_MCM": "795",
+      "Stranding": "37",
+      "Ultimate_Strength_kg": 6302.78287461774,
+      "Weight_per_m_kg_m": 1.10978593272171,
+      "Cross_Sectional_Area_m2": 0.000403225,
+      "Conductor_Diameter_m": 0.0260604,
+      "Final_Modulus_of_Elasticity_N_m2": 56536900000,
+      "Coefficient_Linear_Expansion_per_C": 0.00002304
+    },
+    {
+      "Code_Word": "Quail",
+      "Size_AWG_MCM": "*2/0",
+      "Stranding": "*6/1",
+      "Ultimate_Strength_kg": 2429.54545454545,
+      "Weight_per_m_kg_m": 0.272919545454545,
+      "Cross_Sectional_Area_m2": 0.0000786,
+      "Conductor_Diameter_m": 0.0113532459615971,
+      "Final_Modulus_of_Elasticity_N_m2": 79000000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000191
+    },
+    {
+      "Code_Word": "Penguin",
+      "Size_AWG_MCM": "*4/0",
+      "Stranding": "*6/1",
+      "Ultimate_Strength_kg": 3827.27272727273,
+      "Weight_per_m_kg_m": 0.433986818181818,
+      "Cross_Sectional_Area_m2": 0.0001251,
+      "Conductor_Diameter_m": 0.0142995021842934,
+      "Final_Modulus_of_Elasticity_N_m2": 79000000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000191
+    },
+    {
+      "Code_Word": "Linnet",
+      "Size_AWG_MCM": "*336.4",
+      "Stranding": "*26/7",
+      "Ultimate_Strength_kg": 6386.36363636364,
+      "Weight_per_m_kg_m": 0.690501363636364,
+      "Cross_Sectional_Area_m2": 0.0001981,
+      "Conductor_Diameter_m": 0.0183125063496901,
+      "Final_Modulus_of_Elasticity_N_m2": 75500000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000192
+    },
+    {
+      "Code_Word": "Dove",
+      "Size_AWG_MCM": "*556.5",
+      "Stranding": "*26/7",
+      "Ultimate_Strength_kg": 10181.8181818182,
+      "Weight_per_m_kg_m": 1.14238454545455,
+      "Cross_Sectional_Area_m2": 0.0003279,
+      "Conductor_Diameter_m": 0.0235446510210302,
+      "Final_Modulus_of_Elasticity_N_m2": 75500000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000192
+    },
+    {
+      "Code_Word": "Condor",
+      "Size_AWG_MCM": "*795",
+      "Stranding": "*54/7",
+      "Ultimate_Strength_kg": 12954.5454545455,
+      "Weight_per_m_kg_m": 1.52715636363636,
+      "Cross_Sectional_Area_m2": 0.0004548,
+      "Conductor_Diameter_m": 0.0277608452707508,
+      "Final_Modulus_of_Elasticity_N_m2": 59000000000,
+      "Coefficient_Linear_Expansion_per_C": 0.0000193
+    }
+  ]
+}
