@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import math
 import numpy as np
 from sympy import symbols, Eq, solve
@@ -41,7 +41,8 @@ def calculate_final_tension(alpha, E, Area, W1, W2, S, H1, t1, t2):
 
 @app.route('/conductors')
 def get_conductors():
-    return send_from_directory('static', 'conductors.json')
+    return send_from_directory('static', 'conductors.json', mimetype='application/json')
+
 
 
 @app.route('/calculate', methods=['GET'])
