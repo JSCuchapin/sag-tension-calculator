@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 import math
 import numpy as np
 from sympy import symbols, Eq, solve
 
 app = Flask(__name__)
+CORS(app) # Enable CORS for all routes
 
 # Function to calculate the weight due to wind
 def calculate_weight_due_to_wind(Pressure, Diameter, thickness):
@@ -38,6 +40,12 @@ def calculate_final_tension(alpha, E, Area, W1, W2, S, H1, t1, t2):
     real_roots = [r.evalf() for r in roots if r.is_real and r > 0]  # Filter positive real roots
     
     return max(real_roots) if real_roots else float('nan'), C1, C2, A, B
+
+@app.route('/conductors')
+def get_conductors():
+    return send_from_directory('static', 'conductors.json', mimetype='application/json')
+
+
 
 @app.route('/calculate', methods=['GET'])
 def calculate():
