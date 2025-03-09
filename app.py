@@ -23,7 +23,7 @@ def calculate_total_weight(W_con, W_ice, W_wind):
 # Function to calculate sag based on tension and weight
 # Catenary Equation
 def calculate_sag(S, W, H):
-    sag = (H/W)*(math.cos(S*W/2/H)-1)
+    sag = (H/W)*(math.cosh(S*W/2/H)-1)
     return sag if H > 0 else float('inf')
 
 # Function to calculate blowout angle
