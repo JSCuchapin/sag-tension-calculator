@@ -21,8 +21,15 @@ def calculate_total_weight(W_con, W_ice, W_wind):
     return math.sqrt((W_con + W_ice) ** 2 + W_wind ** 2)
 
 # Function to calculate sag based on tension and weight
+# Catenary Equation
 def calculate_sag(S, W, H):
-    return (W * S**2) / (8 * H) if H > 0 else float('inf')
+    sag = (H/W)*(math.cos(S*W/2/H)-1)
+    return sag if H > 0 else float('inf')
+
+# Function to calculate blowout angle
+def calculate_angle(W_ice, W_wind, W_con):
+    theta = math.atan(W_wind/(W_ice+W_con))*180/3.14
+    return theta
 
 # Function to solve cubic equation for final tension using sympy
 def calculate_final_tension(alpha, E, Area, W1, W2, S, H1, t1, t2):
@@ -61,9 +68,13 @@ def calculate():
         W_wind = calculate_weight_due_to_wind(Pressure, Dia, t)
         W_total = calculate_total_weight(W_con, W_ice, W_wind)
         initial_sag = calculate_sag(S, W_con, H1)
+        theta_deg = calculate_angle(W_ice,W_wind,W_con)
+        theta_rad = theta_deg*3.14/180
         
         H2, C1, C2, A, B = calculate_final_tension(alpha, E, Area, W_con, W_total, S, H1, t1, t2)
         final_sag = calculate_sag(S, W_total, H2)
+        final_horizontal_sag = final_sag*math.sin(theta_rad)
+        final_vertical_sag = final_sag*math.cos(theta_rad)
         
         if math.isnan(H2) or H2 <= 0:
             H2 = "Calculation Error"
@@ -76,10 +87,13 @@ def calculate():
             "final_tension": round(float(H2), 3) if isinstance(H2, (int, float)) and not math.isnan(H2) and not math.isinf(H2) else "Calculation Error",
             "initial_sag": round(float(initial_sag), 3),
             "final_sag": round(float(final_sag), 3) if isinstance(final_sag, (int, float)) else final_sag,
+            "final_vertical_sag": round(float(final_vertical_sag), 3),
+            "final_horizontal_sag": round(float(final_horizontal_sag), 3),
             "C1": round(float(C1), 3),
             "C2": round(float(C2), 6),
             "A": round(float(A), 3),
             "B": round(float(B), 3),
+            "Blowout_angle": round(float(theta_deg), 3),
             "parameters": {
                 "Coefficient_Thermal_Expansion": float(alpha),
                 "Modulus_Elasticity": float(E),
