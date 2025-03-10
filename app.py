@@ -93,6 +93,8 @@ def calculate():
             "C2": round(float(C2), 6),
             "A": round(float(A), 3),
             "B": round(float(B), 3),
+            "weight_ice": round(float(W_ice), 3),
+            "weight_wind": round(float(W_wind), 3),
             "Blowout_angle": round(float(theta_deg), 3),
             "parameters": {
                 "Coefficient_Thermal_Expansion": float(alpha),
